@@ -1,5 +1,7 @@
 package ra.model;
 
+import ra.until.InputMethods;
+
 import java.util.Scanner;
 
 public class Catalog {
@@ -39,31 +41,30 @@ public class Catalog {
         this.descriptions = descriptions;
     }
     // Phương thức nhập thông tin
-    public void inputCatalogInfo() {
-        Scanner scanner = new Scanner(System.in);
+    public void inputCatalogInfo(boolean isAdd) {
 
 
-           // Nhập catalogId với kiểm tra tính hợp lệ
-           while (true) {
-               try {
-                   System.out.print("Nhập catalogId: ");
-                   int inputCatalogId = scanner.nextInt();
-                   setCatalogId(inputCatalogId);
-                   break; // Nếu nhập thành công, thoát khỏi vòng lặp
-               } catch (Exception e) {
-                   System.out.println("Định dạng không hợp lệ. Vui lòng nhập lại.");
-                   scanner.nextLine(); // Xóa dòng trống trong bộ đệm
-               }
-           }
+          if (isAdd){
+              // Nhập catalogId với kiểm tra tính hợp lệ
+              while (true) {
+                  try {
+                      System.out.print("Nhập catalogId: ");
+                      int inputCatalogId = InputMethods.getInteger();
+                      setCatalogId(inputCatalogId);
+                      break; // Nếu nhập thành công, thoát khỏi vòng lặp
+                  } catch (Exception e) {
+                      System.out.println("Định dạng không hợp lệ. Vui lòng nhập lại.");
+                  }
+              }
+          }
 
 
-        // Xóa dòng trống trong bộ đệm
-        scanner.nextLine();
+
 
         // Nhập catalogName với kiểm tra tính hợp lệ
         while (true) {
             System.out.print("Nhập catalogName: ");
-            String inputCatalogName = scanner.nextLine().trim();
+            String inputCatalogName =InputMethods.getString().trim();
             if (!inputCatalogName.isEmpty()) {
                 setCatalogName(inputCatalogName);
                 break; // Nếu nhập thành công, thoát khỏi vòng lặp
@@ -75,7 +76,7 @@ public class Catalog {
         // Nhập descriptions với kiểm tra tính hợp lệ
         while (true) {
             System.out.print("Nhập descriptions: ");
-            String inputDescriptions = scanner.nextLine().trim();
+            String inputDescriptions =InputMethods.getString().trim();
             if (!inputDescriptions.isEmpty()) {
                 setDescriptions(inputDescriptions);
                 break; // Nếu nhập thành công, thoát khỏi vòng lặp

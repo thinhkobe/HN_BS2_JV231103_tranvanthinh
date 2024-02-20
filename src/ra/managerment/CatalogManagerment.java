@@ -41,7 +41,7 @@ public class CatalogManagerment {
         int count=InputMethods.getInteger();
         for (int i = 0; i < count; i++) {
             Catalog catalog=new Catalog();
-            catalog.inputCatalogInfo();
+            catalog.inputCatalogInfo(true);
             catalogService.save(catalog);
         }
 
@@ -70,7 +70,7 @@ public class CatalogManagerment {
         System.out.println("thông tin cũ");
         System.out.println(editCatalog);
         System.out.println("nhập thông tin mới");
-        editCatalog.inputCatalogInfo();
+        editCatalog.inputCatalogInfo(false);
         CatalogService.catalogList.add(editCatalog);
         System.out.println("cập nhật thành công");
     }
